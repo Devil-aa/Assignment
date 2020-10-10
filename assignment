@@ -1,0 +1,111 @@
+CREATE TABLE Product_info
+(  Prod_num int NOT NULL,
+   Prod_name char(30),
+   Selling_price float,
+   Manufacturer_name char(60),
+   PRIMARY KEY(Prod_num)
+);
+
+CREATE TABLE Client_info
+(  Client_num int NOT NULL,
+   Client_name char(30),
+   Client_address varchar(255),
+   City char(20),
+   Pincode int,
+   The_State char(20),
+   Total_balance float,
+   PRIMARY KEY(Client_num)
+);
+
+CREATE TABLE Order_info
+(  Order_num int NOT NULL,
+   Order_date date,
+   Client_num int,
+   Salesman_num int UNIQUE,
+   Payment_by_the_party float,
+   Delivery_date date
+);
+
+CREATE TABLE Salesman_info
+(  The_name char(30),
+   Salesman_Address varchar(255),
+   City char(50),
+   Pincode int,
+   The_state char(20),
+   Salary float,
+   Delivery_Date date,
+   Total_qty_ordered int,
+   Prod_rate float
+);
+
+
+INSERT INTO Product_info
+VALUES('48','Smartwatch','995','Fossil');
+
+INSERT INTO Product_info
+VALUES('49','Sunglasses','559','RayBan');
+
+INSERT INTO Product_info
+VALUES('70','Speaker','529','JBL');
+
+INSERT INTO Product_info
+VALUES('46','Digital Camera','599','Sony');
+
+INSERT INTO Client_info
+VALUES('51','Anamika Singh','244,Sector-10,Indira Nagar','Lucknow','226016','Uttar Pradesh','995');
+
+INSERT INTO Client_info
+VALUES('61','Shreya Gupta','151,Sector-15,Gandhi Nagar','Ahemdabad','380008','Gujarat','559');
+
+INSERT INTO Client_info
+VALUES('84','Aarav Gupta','327,Sector-14,Arjun Nagar','Agra','282007','Uttar Pradesh','529');
+
+INSERT INTO Client_info
+VALUES('85','Himanshu Verma','158,Sector-15,Janakipuram','Delhi','110005','Delhi','599');
+
+INSERT INTO Order_info
+VALUES('48','03-10-2020','51','105','995','08-10-2020');
+
+INSERT INTO Order_info
+VALUES('49','04-10-2020','61','108','559','09-10-2020');
+
+INSERT INTO Order_info
+VALUES('70','05-10-2020','84','206','529','10-10-2020');
+
+INSERT INTO Order_info
+VALUES('46','05-10-2020','85','219','599','10-10-2020');
+
+INSERT INTO Salesman_info
+VALUES('Rohan Yadav','127,Sector-13,Bhootnath','Lucknow','2260001','Uttar Pradesh','20000','08-10-2020','1','995');
+
+INSERT INTO Salesman_info
+VALUES('Karan Mehta','229,Sector-19,Keshav Nagar','Ahemdabad','320008','Gujarat','25000','09-10-2020','1','559');
+
+INSERT INTO Salesman_info
+VALUES('Rohit Sharma','198,Sector-15,Sadar','Agra','223007','Uttar Pradesh','35000','10-10-2020','1','529');
+
+INSERT INTO Salesman_info
+VALUES('Shivam Gupta','158,Sector-16,Sarojini Nagar','Delhi','110001','Delhi','30000','10-10-2020','1','599');
+
+SELECT Client_name,City
+FROM Client_info;
+
+SELECT Product_name
+FROM Product_info;
+
+ALTER TABLE Product_info
+ADD(new_price float);
+
+SELECT Order_num,Order_date
+FROM Order_info;
+
+ALTER TABLE Order_info
+ADD(Product_rate float);
+
+ALTER TABLE Order_info
+ADD(Total_quantity int);
+
+ALTER TABLE Order_info
+ADD(Cancel_date date);
+
+COMMIT;
